@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Number</title>
+</head>
+<body>
+    <script>
+        // Get the path from the URL
+        const path = window.location.pathname;
+
+        // Extract the phone number from the path
+        const phoneNumber = path.split('/').pop();
+
+        // Validate if the path contains a valid phone number (with +, *, #, ,)
+        const phoneRegex = /^[\d+*#,-]+$/;
+        if (phoneRegex.test(phoneNumber)) {
+            // Redirect to the tel: link
+            window.location.href = 'tel:' + phoneNumber;
+        } else {
+            document.body.innerHTML = '<h1>Invalid phone number</h1>';
+        }
+    </script>
+    <footer>
+        <p>This page was created for the use of City of Austin | Capital Delivery Services | Technology Services Division</p>
+    </footer>
+</body>
+</html>
